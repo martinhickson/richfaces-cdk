@@ -1,6 +1,6 @@
 package org.richfaces.cdk.model;
 
-import javax.faces.convert.Converter;
+import jakarta.faces.convert.Converter;
 
 /**
  * <p class="changed_added_4_0">
@@ -12,7 +12,7 @@ import javax.faces.convert.Converter;
  * <li>{@link Converter}</li>
  * <li>{@link Validator}</li>
  * <li>{@link ClientBehavior}</li>
- * <li>{@link javax.faces.render.ClientBehaviorRenderer}
+ * <li>{@link jakarta.faces.render.ClientBehaviorRenderer}
  * </ul>
  *
  * @author asmirnov@exadel.com

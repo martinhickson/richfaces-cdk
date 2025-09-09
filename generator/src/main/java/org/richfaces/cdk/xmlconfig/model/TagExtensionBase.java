@@ -2,7 +2,7 @@ package org.richfaces.cdk.xmlconfig.model;
 
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElement;
 
 import org.richfaces.cdk.model.ComponentLibrary;
 import org.richfaces.cdk.model.TagModel;

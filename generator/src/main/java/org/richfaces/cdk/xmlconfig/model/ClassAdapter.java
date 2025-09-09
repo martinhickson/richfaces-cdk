@@ -22,7 +22,7 @@
  */
 package org.richfaces.cdk.xmlconfig.model;
 
-import javax.xml.bind.annotation.adapters.XmlAdapter;
+import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 
 import org.richfaces.cdk.model.ClassName;
 

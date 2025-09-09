@@ -27,7 +27,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import javax.faces.render.RenderKitFactory;
+import jakarta.faces.render.RenderKitFactory;
 
 /**
  * <p class="changed_added_4_0">

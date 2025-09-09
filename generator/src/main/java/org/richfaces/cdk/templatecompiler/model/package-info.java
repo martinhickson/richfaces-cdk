@@ -6,11 +6,11 @@
  *
  */
 @XmlAccessorType(XmlAccessType.NONE)
-@javax.xml.bind.annotation.XmlSchema(namespace = Template.CDK_NAMESPACE, xmlns = {
-        @javax.xml.bind.annotation.XmlNs(prefix = "cdk", namespaceURI = Template.CDK_NAMESPACE),
-        @javax.xml.bind.annotation.XmlNs(prefix = "cc", namespaceURI = Template.COMPOSITE_NAMESPACE) })
+@jakarta.xml.bind.annotation.XmlSchema(namespace = Template.CDK_NAMESPACE, xmlns = {
+        @jakarta.xml.bind.annotation.XmlNs(prefix = "cdk", namespaceURI = Template.CDK_NAMESPACE),
+        @jakarta.xml.bind.annotation.XmlNs(prefix = "cc", namespaceURI = Template.COMPOSITE_NAMESPACE) })
 package org.richfaces.cdk.templatecompiler.model;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 

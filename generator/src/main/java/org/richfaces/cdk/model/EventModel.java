@@ -22,15 +22,15 @@
  */
 package org.richfaces.cdk.model;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlType;
 
 import org.richfaces.cdk.util.ComparatorUtils;
 
 /**
  * <p class="changed_added_4_0">
- * That bean represent {@link javax.faces.event.FacesEvent} subclass that can be fired by component.
+ * That bean represent {@link jakarta.faces.event.FacesEvent} subclass that can be fired by component.
  * </p>
  *
  * @author asmirnov@exadel.com

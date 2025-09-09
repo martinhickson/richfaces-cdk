@@ -98,7 +98,7 @@ public class TaskFactoryImpl implements CompilationTaskFactory {
             CompilationTask task = getJavaCompiler().getTask(null, getFileManager(),
                     new DiagnosticListenerImplementation(log, locale), compilerOptions, null, sourceObjects);
             task.setLocale(locale);
-            task.setProcessors(Collections.singleton(cdkProcessor));
+            task.setProcessors(Collections.<Processor>singleton(cdkProcessor));
             return task;
         } else {
             // no Java sources, try to build from xml files
@@ -111,6 +111,11 @@ public class TaskFactoryImpl implements CompilationTaskFactory {
                 @Override
                 public void setLocale(Locale locale) {
 
+                }
+
+                @Override
+                public void addModules(Iterable<String> moduleNames) {
+                    // do nothing - added for Java 11 compatibility
                 }
 
                 @Override

@@ -2,8 +2,8 @@ package org.richfaces.cdk.templatecompiler.model;
 
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlAnyElement;
-import javax.xml.bind.annotation.XmlMixed;
+import jakarta.xml.bind.annotation.XmlAnyElement;
+import jakarta.xml.bind.annotation.XmlMixed;
 
 public interface LeafModelElement extends ModelElement {
     /*

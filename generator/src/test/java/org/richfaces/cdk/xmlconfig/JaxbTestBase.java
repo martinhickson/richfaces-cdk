@@ -3,7 +3,7 @@ package org.richfaces.cdk.xmlconfig;
 import java.io.ByteArrayOutputStream;
 import java.io.StringReader;
 
-import javax.xml.bind.JAXB;
+import jakarta.xml.bind.JAXB;
 
 import org.richfaces.cdk.CdkTestBase;
 

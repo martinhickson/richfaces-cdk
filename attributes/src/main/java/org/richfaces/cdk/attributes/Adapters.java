@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.TreeMap;
 
-import javax.xml.bind.annotation.adapters.XmlAdapter;
+import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 
 /**
  * @author Nick Belaevski
@@ -43,7 +43,7 @@ public final class Adapters {
 
         @Override
         public ValueType marshal(Map<String, KeyType> v) throws Exception {
-            ValueType valueType = valueTypeClass.newInstance();
+            ValueType valueType = valueTypeClass.getDeclaredConstructor().newInstance();
             valueType.setChildren(v.values());
             return valueType;
         }

@@ -25,8 +25,8 @@ package org.richfaces.cdk.templatecompiler.model;
 import java.io.Serializable;
 
 import javax.xml.XMLConstants;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import javax.xml.namespace.QName;
 
 /**

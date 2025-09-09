@@ -21,7 +21,7 @@
  */
 package org.richfaces.cdk.templatecompiler.model;
 
-import javax.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlAttribute;
 
 /**
  * @author Nick Belaevski

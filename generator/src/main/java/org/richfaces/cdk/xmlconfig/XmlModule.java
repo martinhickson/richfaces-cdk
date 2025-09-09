@@ -27,7 +27,8 @@ import org.xml.sax.ext.EntityResolver2;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.multibindings.Multibinder;
-import com.sun.xml.bind.marshaller.NamespacePrefixMapper;
+// TODO: NamespacePrefixMapper is not available in Jakarta EE 10 JAXB implementation
+// import org.glassfish.jaxb.marshaller.NamespacePrefixMapper;
 
 /**
  * @author asmirnov
@@ -44,7 +45,8 @@ public class XmlModule extends AbstractModule {
     protected void configure() {
         bind(EntityResolver2.class).to(CdkEntityResolver.class);
         bind(JAXB.class).to(JAXBBinding.class);
-        bind(NamespacePrefixMapper.class).to(FacesConfigNamespacePreffixMapper.class);
+        // TODO: NamespacePrefixMapper binding disabled for Jakarta EE 10 compatibility
+        // bind(NamespacePrefixMapper.class).to(FacesConfigNamespacePreffixMapper.class);
         Multibinder.newSetBinder(binder(), ModelBuilder.class).addBinding().to(FacesConfigParser.class);
         Multibinder.newSetBinder(binder(), CdkWriter.class).addBinding().to(FacesConfigGenerator.class);
     }

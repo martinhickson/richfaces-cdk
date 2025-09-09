@@ -24,7 +24,7 @@ package org.richfaces.cdk.templatecompiler.model;
 
 import java.io.Serializable;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 import org.richfaces.cdk.CdkException;
 

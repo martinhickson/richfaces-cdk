@@ -35,7 +35,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
-import javax.activation.MimetypesFileTypeMap;
+import jakarta.activation.MimetypesFileTypeMap;
 import javax.faces.context.ExternalContext;
 
 import com.google.common.collect.Sets;
@@ -449,13 +449,13 @@ public class ExternalContextImpl extends ExternalContext {
     public String getResponseCharacterEncoding() {
         return "UTF-8";
     }
-    
+
     /**
      * Returns mime-type for known resorce file types
-     * 
+     *
      * @param file the full name of file
      * @return mime-type for known resorce file types
-     * 
+     *
      * TODO load supported mime-types from mime.types file in this project
      */
     @Override

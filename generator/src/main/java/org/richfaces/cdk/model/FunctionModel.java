@@ -22,7 +22,7 @@
  */
 package org.richfaces.cdk.model;
 
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlType;
 
 import org.richfaces.cdk.annotations.TagType;
 import org.richfaces.cdk.util.ComparatorUtils;

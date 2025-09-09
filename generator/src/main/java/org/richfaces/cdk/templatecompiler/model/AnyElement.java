@@ -27,8 +27,8 @@ import static org.richfaces.cdk.templatecompiler.QNameComparator.QNAME_COMPARATO
 import java.util.Map;
 import java.util.TreeMap;
 
-import javax.xml.bind.annotation.XmlAnyAttribute;
-import javax.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlAnyAttribute;
+import jakarta.xml.bind.annotation.XmlAttribute;
 import javax.xml.namespace.QName;
 
 import org.richfaces.cdk.CdkException;

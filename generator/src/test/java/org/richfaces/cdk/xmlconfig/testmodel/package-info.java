@@ -13,11 +13,11 @@
  *
  */
 @XmlAccessorType(XmlAccessType.NONE)
-@javax.xml.bind.annotation.XmlSchema(namespace = Root.HTTP_FOO_BAR_SCHEMA, xmlns = {
-        @javax.xml.bind.annotation.XmlNs(prefix = "", namespaceURI = Root.HTTP_FOO_BAR_SCHEMA),
-        @javax.xml.bind.annotation.XmlNs(prefix = "ext", namespaceURI = Root.EXTENSIONS_NAMESPACE) })
+@jakarta.xml.bind.annotation.XmlSchema(namespace = Root.HTTP_FOO_BAR_SCHEMA, xmlns = {
+        @jakarta.xml.bind.annotation.XmlNs(prefix = "", namespaceURI = Root.HTTP_FOO_BAR_SCHEMA),
+        @jakarta.xml.bind.annotation.XmlNs(prefix = "ext", namespaceURI = Root.EXTENSIONS_NAMESPACE) })
 package org.richfaces.cdk.xmlconfig.testmodel;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 

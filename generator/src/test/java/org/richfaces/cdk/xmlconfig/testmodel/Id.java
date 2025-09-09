@@ -1,6 +1,6 @@
 package org.richfaces.cdk.xmlconfig.testmodel;
 
-import javax.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElement;
 
 public interface Id {
     /**

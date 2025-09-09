@@ -719,7 +719,7 @@ Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
                     Examples:
                     <ul>
                         <li>
-                            <code><![CDATA[<cdk:import package="javax.faces.component" names="UIInput UIOutput" />]]></code>
+                            <code><![CDATA[<cdk:import package="jakarta.faces.component" names="UIInput UIOutput" />]]></code>
                         </li>
                         <li>
                             <code><![CDATA[<cdk:import package="java.util" names="*" />]]></code>

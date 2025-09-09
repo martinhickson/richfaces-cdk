@@ -24,8 +24,8 @@ package org.richfaces.cdk.xmlconfig.testmodel;
 
 import java.util.Set;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 import com.google.common.collect.Sets;
 

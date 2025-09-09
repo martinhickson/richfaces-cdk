@@ -24,7 +24,7 @@ package org.richfaces.cdk.model;
 
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlAnyElement;
+import jakarta.xml.bind.annotation.XmlAnyElement;
 
 import org.w3c.dom.Element;
 

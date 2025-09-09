@@ -28,8 +28,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import javax.faces.component.behavior.ClientBehavior;
-import javax.faces.el.MethodBinding;
+import jakarta.faces.component.behavior.ClientBehavior;
 
 /**
  * <p class="changed_added_4_0">
@@ -129,7 +128,7 @@ public @interface Attribute {
 
     /**
      * <p class="changed_added_4_0">
-     * Method signature for attributes with EL method reference type, either {@link MethodBinding} or {@link MethodExpression}.
+     * Method signature for attributes with EL method reference type, such as MethodExpression.
      * </p>
      *
      * @return

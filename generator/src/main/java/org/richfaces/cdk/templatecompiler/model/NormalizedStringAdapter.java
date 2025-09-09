@@ -1,6 +1,6 @@
 package org.richfaces.cdk.templatecompiler.model;
 
-import javax.xml.bind.annotation.adapters.XmlAdapter;
+import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 
 import org.richfaces.cdk.util.Strings;
 
