@@ -69,6 +69,11 @@ public class CdkEntityResolver implements EntityResolver2 {
             .put("http://java.sun.com/xml/ns/javaee/javaee_5.xsd", "/javaee_5.xsd")
             .put("http://java.sun.com/xml/ns/javaee/javaee_web_services_1_2.xsd", "/javaee_web_services_1_2.xsd")
             .put("http://java.sun.com/xml/ns/javaee/javaee_web_services_client_1_2.xsd", "/javaee_web_services_client_1_2.xsd")
+            // Jakarta EE 4.0 schema mappings
+            .put("https://jakarta.ee/xml/ns/jakartaee/web-facesconfig_4_0.xsd", "/web-facesconfig_4_0.xsd")
+            .put("https://jakarta.ee/xml/ns/jakartaee/jakartaee_10.xsd", "/jakartaee_10.xsd")
+            .put("https://jakarta.ee/xml/ns/jakartaee/web-facelettaglibrary_4_0.xsd", "/web-facelettaglibrary_4_0.xsd")
+            .put("https://jakarta.ee/xml/ns/jakartaee/jakartaee_web_services_client_2_0.xsd", "/jakartaee_web_services_client_2_0.xsd")
             .put("http://www.w3.org/2001/03/XMLSchema.dtd", "/XMLSchema.dtd")
             .put("http://www.w3.org/2001/03/xml.xsd", "/xml.xsd").put("http://www.w3.org/2001/xml.xsd", "/xml.xsd")
             .put("http://jboss.org/schema/richfaces/cdk/cdk-template.xsd", "/cdk-template.xsd")
