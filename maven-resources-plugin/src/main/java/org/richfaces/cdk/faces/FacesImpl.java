@@ -23,8 +23,8 @@ package org.richfaces.cdk.faces;
 
 import java.util.Collections;
 
-import javax.faces.application.ResourceHandler;
-import javax.faces.context.FacesContext;
+import jakarta.faces.application.ResourceHandler;
+import jakarta.faces.context.FacesContext;
 
 import org.richfaces.application.DependencyInjectionServiceImpl;
 import org.richfaces.application.DependencyInjector;

@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       release_version:
-        description: 'Release version (e.g., 4.2.2.Final.jakarta.bravura.1)'
+        description: 'Release version (e.g., 4.2.2-bravura.3)'
         required: true
         type: string
 
@@ -20,6 +20,10 @@ jobs:
       RELEASE_VERSION: ${{ github.event.inputs.release_version }}
       BRANCH_NAME: v${{ github.event.inputs.release_version }}
       TAG_NAME: v${{ github.event.inputs.release_version }}-release
+      JBOSS_PUBLIC_REPO: https://repository.jboss.org/nexus/content/groups/public
+      EXTRA_REPO_RICHFACES: https://maven.pkg.github.com/martinhickson/richfaces
+      EXTRA_REPO_RICHFACES_CORE: https://maven.pkg.github.com/martinhickson/richfaces4-core
+      EXTRA_REPO_EL: https://maven.pkg.github.com/martinhickson/jboss-el
 
     steps:
     - name: Checkout code
@@ -53,12 +57,11 @@ jobs:
 
     - name: Verify version updates
       run: |
-        echo "Verifying version updates..."
-        echo "Aggregator POM version:"
-        grep -A 2 "<artifactId>aggregator</artifactId>" pom.xml | grep "<version>" || grep -A 1 "<artifactId>aggregator</artifactId>" pom.xml
-        echo ""
-        echo "Maven CDK plugin parent version:"
-        grep -A 3 "<artifactId>parent</artifactId>" maven-cdk-plugin/pom.xml | grep "<version>" || true
+        echo "Root aggregator:"
+        grep -A1 "<artifactId>aggregator</artifactId>" pom.xml | grep "<version>"
+        echo "Maven CDK plugin parent ref:"
+        echo "RichFaces consumption version:"
+        grep "<version.richfaces>" pom.xml
 
     - name: Commit and push version changes
       run: |
@@ -79,7 +82,7 @@ jobs:
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2
 
-    - name: Configure Maven for GitHub Packages
+    - name: Configure Maven settings
       run: |
         mkdir -p ~/.m2
         cat > ~/.m2/settings.xml << EOF
@@ -93,12 +96,70 @@ jobs:
               <username>${{ github.actor }}</username>
               <password>${{ secrets.GITHUB_TOKEN }}</password>
             </server>
+            <server>
+              <id>github-packages-richfaces</id>
+              <username>${{ github.actor }}</username>
+              <password>${{ secrets.GITHUB_TOKEN }}</password>
+            </server>
+            <server>
+              <id>github-packages-richfaces-core</id>
+              <username>${{ github.actor }}</username>
+              <password>${{ secrets.GITHUB_TOKEN }}</password>
+            </server>
+            <server>
+              <id>github-packages-el</id>
+              <username>${{ github.actor }}</username>
+              <password>${{ secrets.GITHUB_TOKEN }}</password>
+            </server>
           </servers>
+          <profiles>
+            <profile>
+              <id>ci-extra-repositories</id>
+              <repositories>
+                <repository>
+                  <id>jboss-public</id>
+                  <name>JBoss Public Repository Group</name>
+                  <url>${JBOSS_PUBLIC_REPO}</url>
+                  <releases><enabled>true</enabled></releases>
+                  <snapshots><enabled>false</enabled></snapshots>
+                </repository>
+              </repositories>
+            </profile>
+            <profile>
+              <id>bravura-extra-repos</id>
+              <repositories>
+                <repository>
+                  <id>github-packages-richfaces</id>
+                  <name>Bravura RichFaces (GitHub Packages)</name>
+                  <url>${EXTRA_REPO_RICHFACES}</url>
+                  <releases><enabled>true</enabled></releases>
+                  <snapshots><enabled>true</enabled></snapshots>
+                </repository>
+                <repository>
+                  <id>github-packages-richfaces-core</id>
+                  <name>Bravura RichFaces Core (GitHub Packages)</name>
+                  <url>${EXTRA_REPO_RICHFACES_CORE}</url>
+                  <releases><enabled>true</enabled></releases>
+                  <snapshots><enabled>true</enabled></snapshots>
+                </repository>
+                <repository>
+                  <id>github-packages-el</id>
+                  <name>Bravura JBoss EL (GitHub Packages)</name>
+                  <url>${EXTRA_REPO_EL}</url>
+                  <releases><enabled>true</enabled></releases>
+                  <snapshots><enabled>true</enabled></snapshots>
+                </repository>
+              </repositories>
+            </profile>
+          </profiles>
+          <activeProfiles>
+            <activeProfile>ci-extra-repositories</activeProfile>
+          </activeProfiles>
         </settings>
         EOF
 
     - name: Build all modules
-      run: mvn clean install -ntp -Dmaven.test.skip=true
+      run: mvn clean install -ntp -Dmaven.test.skip=true -Pbravura-extra-repos
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -112,20 +173,28 @@ jobs:
 
     - name: Publish to GitHub Packages
       run: |
-        mvn deploy -ntp -Dmaven.test.skip=true \
+        mvn deploy -ntp -Dmaven.test.skip=true -Pbravura-extra-repos \
           -DaltDeploymentRepository=github-packages::default::https://maven.pkg.github.com/${{ github.repository }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Prepare GitHub Release assets
+      run: |
+        mkdir -p release-assets
+        cp dist/target/cdk-project.zip release-assets/
+        cp maven-cdk-plugin/target/cdk.jar release-assets/maven-cdk-plugin.jar
+        cp dist/target/cdk.jar release-assets/cdk-dist.jar
+        echo "Release assets:"
+        ls -la release-assets/
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
         name: release-artifacts-${{ github.event.inputs.release_version }}
         path: |
-          **/target/*.jar
-          **/target/*.zip
+          release-assets/*
         retention-days: 30
-        if-no-files-found: warn
+        if-no-files-found: error
 
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v1
@@ -135,15 +204,15 @@ jobs:
         body: |
           Release ${{ env.RELEASE_VERSION }}
 
-          This release includes:
-          - RichFaces CDK Maven plugin and library artifacts published to GitHub Packages
+          All Maven artifacts published at version **${{ env.RELEASE_VERSION }}**.
+          Bravura RichFaces UI + Core consumed from GitHub Packages via `version.richfaces`.
+          Upstream RichFaces BOM remains **4.2.2.Final** for legacy/third-party coords.
+
           - Release branch: ${{ env.BRANCH_NAME }}
           - Tag: ${{ env.TAG_NAME }}
         draft: false
         prerelease: false
         files: |
-          maven-cdk-plugin/target/*.jar
-          dist/target/*.zip
-          dist/target/*.jar
+          release-assets/*
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

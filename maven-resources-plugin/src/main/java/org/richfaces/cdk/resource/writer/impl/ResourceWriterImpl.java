@@ -33,7 +33,7 @@ import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.Set;
 
-import javax.faces.application.Resource;
+import jakarta.faces.application.Resource;
 
 import org.apache.maven.plugin.logging.Log;
 import org.richfaces.cdk.ResourceWriter;

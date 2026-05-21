@@ -25,26 +25,21 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Locale;
 
-import javax.el.ELException;
-import javax.el.ExpressionFactory;
-import javax.el.ValueExpression;
-import javax.faces.FacesException;
-import javax.faces.application.Application;
-import javax.faces.application.NavigationHandler;
-import javax.faces.application.ProjectStage;
-import javax.faces.application.ResourceHandler;
-import javax.faces.application.StateManager;
-import javax.faces.application.ViewHandler;
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.convert.Converter;
-import javax.faces.el.MethodBinding;
-import javax.faces.el.PropertyResolver;
-import javax.faces.el.ReferenceSyntaxException;
-import javax.faces.el.ValueBinding;
-import javax.faces.el.VariableResolver;
-import javax.faces.event.ActionListener;
-import javax.faces.validator.Validator;
+import jakarta.el.ELException;
+import jakarta.el.ExpressionFactory;
+import jakarta.el.ValueExpression;
+import jakarta.faces.FacesException;
+import jakarta.faces.application.Application;
+import jakarta.faces.application.NavigationHandler;
+import jakarta.faces.application.ProjectStage;
+import jakarta.faces.application.ResourceHandler;
+import jakarta.faces.application.StateManager;
+import jakarta.faces.application.ViewHandler;
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.convert.Converter;
+import jakarta.faces.event.ActionListener;
+import jakarta.faces.validator.Validator;
 
 import org.richfaces.application.ServiceTracker;
 
@@ -64,7 +59,7 @@ public class ApplicationImpl extends Application {
     /*
      * (non-Javadoc)
      *
-     * @see javax.faces.application.Application#getActionListener()
+     * @see jakarta.faces.application.Application#getActionListener()
      */
     @Override
     public ActionListener getActionListener() {
@@ -75,7 +70,7 @@ public class ApplicationImpl extends Application {
     /*
      * (non-Javadoc)
      *
-     * @see javax.faces.application.Application#setActionListener(javax.faces.event.ActionListener)
+     * @see jakarta.faces.application.Application#setActionListener(jakarta.faces.event.ActionListener)
      */
     @Override
     public void setActionListener(ActionListener listener) {
@@ -86,7 +81,7 @@ public class ApplicationImpl extends Application {
     /*
      * (non-Javadoc)
      *
-     * @see javax.faces.application.Application#getDefaultLocale()
+     * @see jakarta.faces.application.Application#getDefaultLocale()
      */
     @Override
     public Locale getDefaultLocale() {
@@ -97,7 +92,7 @@ public class ApplicationImpl extends Application {
     /*
      * (non-Javadoc)
      *
-     * @see javax.faces.application.Application#setDefaultLocale(java.util.Locale)
+     * @see jakarta.faces.application.Application#setDefaultLocale(java.util.Locale)
      */
     @Override
     public void setDefaultLocale(Locale locale) {
@@ -108,7 +103,7 @@ public class ApplicationImpl extends Application {
     /*
      * (non-Javadoc)
      *
-     * @see javax.faces.application.Application#getDefaultRenderKitId()
+     * @see jakarta.faces.application.Application#getDefaultRenderKitId()
      */
     @Override
     public String getDefaultRenderKitId() {
@@ -119,7 +114,7 @@ public class ApplicationImpl extends Application {
     /*
      * (non-Javadoc)
      *
-     * @see javax.faces.application.Application#setDefaultRenderKitId(java.lang.String)
+     * @see jakarta.faces.application.Application#setDefaultRenderKitId(java.lang.String)
      */
     @Override
     public void setDefaultRenderKitId(String renderKitId) {
@@ -130,7 +125,7 @@ public class ApplicationImpl extends Application {
     /*
      * (non-Javadoc)
      *
-     * @see javax.faces.application.Application#getMessageBundle()
+     * @see jakarta.faces.application.Application#getMessageBundle()
      */
     @Override
     public String getMessageBundle() {
@@ -141,7 +136,7 @@ public class ApplicationImpl extends Application {
     /*
      * (non-Javadoc)
      *
-     * @see javax.faces.application.Application#setMessageBundle(java.lang.String)
+     * @see jakarta.faces.application.Application#setMessageBundle(java.lang.String)
      */
     @Override
     public void setMessageBundle(String bundle) {
@@ -152,7 +147,7 @@ public class ApplicationImpl extends Application {
     /*
      * (non-Javadoc)
      *
-     * @see javax.faces.application.Application#getNavigationHandler()
+     * @see jakarta.faces.application.Application#getNavigationHandler()
      */
     @Override
     public NavigationHandler getNavigationHandler() {
@@ -163,7 +158,7 @@ public class ApplicationImpl extends Application {
     /*
      * (non-Javadoc)
      *
-     * @see javax.faces.application.Application#setNavigationHandler(javax.faces.application.NavigationHandler)
+     * @see jakarta.faces.application.Application#setNavigationHandler(jakarta.faces.application.NavigationHandler)
      */
     @Override
     public void setNavigationHandler(NavigationHandler handler) {
@@ -174,51 +169,7 @@ public class ApplicationImpl extends Application {
     /*
      * (non-Javadoc)
      *
-     * @see javax.faces.application.Application#getPropertyResolver()
-     */
-    @Override
-    public PropertyResolver getPropertyResolver() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    /*
-     * (non-Javadoc)
-     *
-     * @see javax.faces.application.Application#setPropertyResolver(javax.faces.el.PropertyResolver)
-     */
-    @Override
-    public void setPropertyResolver(PropertyResolver resolver) {
-        // TODO Auto-generated method stub
-
-    }
-
-    /*
-     * (non-Javadoc)
-     *
-     * @see javax.faces.application.Application#getVariableResolver()
-     */
-    @Override
-    public VariableResolver getVariableResolver() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    /*
-     * (non-Javadoc)
-     *
-     * @see javax.faces.application.Application#setVariableResolver(javax.faces.el.VariableResolver)
-     */
-    @Override
-    public void setVariableResolver(VariableResolver resolver) {
-        // TODO Auto-generated method stub
-
-    }
-
-    /*
-     * (non-Javadoc)
-     *
-     * @see javax.faces.application.Application#getViewHandler()
+     * @see jakarta.faces.application.Application#getViewHandler()
      */
     @Override
     public ViewHandler getViewHandler() {
@@ -229,7 +180,7 @@ public class ApplicationImpl extends Application {
     /*
      * (non-Javadoc)
      *
-     * @see javax.faces.application.Application#setViewHandler(javax.faces.application.ViewHandler)
+     * @see jakarta.faces.application.Application#setViewHandler(jakarta.faces.application.ViewHandler)
      */
     @Override
     public void setViewHandler(ViewHandler handler) {
@@ -240,7 +191,7 @@ public class ApplicationImpl extends Application {
     /*
      * (non-Javadoc)
      *
-     * @see javax.faces.application.Application#getStateManager()
+     * @see jakarta.faces.application.Application#getStateManager()
      */
     @Override
     public StateManager getStateManager() {
@@ -251,7 +202,7 @@ public class ApplicationImpl extends Application {
     /*
      * (non-Javadoc)
      *
-     * @see javax.faces.application.Application#setStateManager(javax.faces.application.StateManager)
+     * @see jakarta.faces.application.Application#setStateManager(jakarta.faces.application.StateManager)
      */
     @Override
     public void setStateManager(StateManager manager) {
@@ -262,7 +213,7 @@ public class ApplicationImpl extends Application {
     /*
      * (non-Javadoc)
      *
-     * @see javax.faces.application.Application#addComponent(java.lang.String, java.lang.String)
+     * @see jakarta.faces.application.Application#addComponent(java.lang.String, java.lang.String)
      */
     @Override
     public void addComponent(String componentType, String componentClass) {
@@ -273,31 +224,17 @@ public class ApplicationImpl extends Application {
     /*
      * (non-Javadoc)
      *
-     * @see javax.faces.application.Application#createComponent(java.lang.String)
+     * @see jakarta.faces.application.Application#createComponent(java.lang.String)
      */
     @Override
     public UIComponent createComponent(String componentType) throws FacesException {
-        // TODO Auto-generated method stub
         return null;
     }
 
     /*
      * (non-Javadoc)
      *
-     * @see javax.faces.application.Application#createComponent(javax.faces.el.ValueBinding, javax.faces.context.FacesContext,
-     * java.lang.String)
-     */
-    @Override
-    public UIComponent createComponent(ValueBinding componentBinding, FacesContext context, String componentType)
-            throws FacesException {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    /*
-     * (non-Javadoc)
-     *
-     * @see javax.faces.application.Application#getComponentTypes()
+     * @see jakarta.faces.application.Application#getComponentTypes()
      */
     @Override
     public Iterator<String> getComponentTypes() {
@@ -308,7 +245,7 @@ public class ApplicationImpl extends Application {
     /*
      * (non-Javadoc)
      *
-     * @see javax.faces.application.Application#addConverter(java.lang.String, java.lang.String)
+     * @see jakarta.faces.application.Application#addConverter(java.lang.String, java.lang.String)
      */
     @Override
     public void addConverter(String converterId, String converterClass) {
@@ -319,7 +256,7 @@ public class ApplicationImpl extends Application {
     /*
      * (non-Javadoc)
      *
-     * @see javax.faces.application.Application#addConverter(java.lang.Class, java.lang.String)
+     * @see jakarta.faces.application.Application#addConverter(java.lang.Class, java.lang.String)
      */
     @Override
     public void addConverter(Class<?> targetClass, String converterClass) {
@@ -330,7 +267,7 @@ public class ApplicationImpl extends Application {
     /*
      * (non-Javadoc)
      *
-     * @see javax.faces.application.Application#createConverter(java.lang.String)
+     * @see jakarta.faces.application.Application#createConverter(java.lang.String)
      */
     @Override
     public Converter createConverter(String converterId) {
@@ -341,7 +278,7 @@ public class ApplicationImpl extends Application {
     /*
      * (non-Javadoc)
      *
-     * @see javax.faces.application.Application#createConverter(java.lang.Class)
+     * @see jakarta.faces.application.Application#createConverter(java.lang.Class)
      */
     @Override
     public Converter createConverter(Class<?> targetClass) {
@@ -352,7 +289,7 @@ public class ApplicationImpl extends Application {
     /*
      * (non-Javadoc)
      *
-     * @see javax.faces.application.Application#getConverterIds()
+     * @see jakarta.faces.application.Application#getConverterIds()
      */
     @Override
     public Iterator<String> getConverterIds() {
@@ -363,29 +300,17 @@ public class ApplicationImpl extends Application {
     /*
      * (non-Javadoc)
      *
-     * @see javax.faces.application.Application#getConverterTypes()
+     * @see jakarta.faces.application.Application#getConverterTypes()
      */
     @Override
     public Iterator<Class<?>> getConverterTypes() {
-        // TODO Auto-generated method stub
         return null;
     }
 
     /*
      * (non-Javadoc)
      *
-     * @see javax.faces.application.Application#createMethodBinding(java.lang.String, java.lang.Class<?>[])
-     */
-    @Override
-    public MethodBinding createMethodBinding(String ref, Class<?>[] params) throws ReferenceSyntaxException {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    /*
-     * (non-Javadoc)
-     *
-     * @see javax.faces.application.Application#getSupportedLocales()
+     * @see jakarta.faces.application.Application#getSupportedLocales()
      */
     @Override
     public Iterator<Locale> getSupportedLocales() {
@@ -396,7 +321,7 @@ public class ApplicationImpl extends Application {
     /*
      * (non-Javadoc)
      *
-     * @see javax.faces.application.Application#setSupportedLocales(java.util.Collection)
+     * @see jakarta.faces.application.Application#setSupportedLocales(java.util.Collection)
      */
     @Override
     public void setSupportedLocales(Collection<Locale> locales) {
@@ -407,7 +332,7 @@ public class ApplicationImpl extends Application {
     /*
      * (non-Javadoc)
      *
-     * @see javax.faces.application.Application#addValidator(java.lang.String, java.lang.String)
+     * @see jakarta.faces.application.Application#addValidator(java.lang.String, java.lang.String)
      */
     @Override
     public void addValidator(String validatorId, String validatorClass) {
@@ -418,7 +343,7 @@ public class ApplicationImpl extends Application {
     /*
      * (non-Javadoc)
      *
-     * @see javax.faces.application.Application#createValidator(java.lang.String)
+     * @see jakarta.faces.application.Application#createValidator(java.lang.String)
      */
     @Override
     public Validator createValidator(String validatorId) throws FacesException {
@@ -429,22 +354,10 @@ public class ApplicationImpl extends Application {
     /*
      * (non-Javadoc)
      *
-     * @see javax.faces.application.Application#getValidatorIds()
+     * @see jakarta.faces.application.Application#getValidatorIds()
      */
     @Override
     public Iterator<String> getValidatorIds() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    /*
-     * (non-Javadoc)
-     *
-     * @see javax.faces.application.Application#createValueBinding(java.lang.String)
-     */
-    @Override
-    public ValueBinding createValueBinding(String ref) throws ReferenceSyntaxException {
-        // TODO Auto-generated method stub
         return null;
     }
 
@@ -456,7 +369,7 @@ public class ApplicationImpl extends Application {
     /*
      * (non-Javadoc)
      *
-     * @see javax.faces.application.Application#getExpressionFactory()
+     * @see jakarta.faces.application.Application#getExpressionFactory()
      */
     @Override
     public ExpressionFactory getExpressionFactory() {
@@ -466,7 +379,7 @@ public class ApplicationImpl extends Application {
     /*
      * (non-Javadoc)
      *
-     * @see javax.faces.application.Application#getResourceHandler()
+     * @see jakarta.faces.application.Application#getResourceHandler()
      */
     @Override
     public ResourceHandler getResourceHandler() {
