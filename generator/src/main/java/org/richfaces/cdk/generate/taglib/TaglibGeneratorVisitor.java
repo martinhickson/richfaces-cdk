@@ -88,12 +88,12 @@ public class TaglibGeneratorVisitor extends SimpleVisitor<Boolean, ComponentLibr
     @Override
     public Boolean visitComponentLibrary(ComponentLibrary model, ComponentLibrary componentLibrary) {
 
-        faceletTaglib = document.addElement("facelet-taglib", "http://java.sun.com/xml/ns/javaee");
+        faceletTaglib = document.addElement("facelet-taglib", ComponentLibrary.FACES_CONFIG_NAMESPACE);
         faceletTaglib.addAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
-        faceletTaglib.addAttribute("xsi:schemaLocation",
-                "http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd");
+        faceletTaglib.addAttribute("xsi:schemaLocation", ComponentLibrary.FACES_CONFIG_NAMESPACE + " "
+                + ComponentLibrary.TAGLIB_SCHEMA_LOCATION);
 
-        faceletTaglib.addAttribute("version", "2.0");
+        faceletTaglib.addAttribute("version", "4.0");
         faceletTaglib.addAttribute("id", model.getTaglib().getShortName());
 
         faceletTaglib.addElement("namespace").addText(model.getTaglib().getUri());

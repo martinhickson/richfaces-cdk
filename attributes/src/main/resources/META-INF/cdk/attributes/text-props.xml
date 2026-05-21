@@ -16,7 +16,7 @@
         Boston, MA 02110-1301 USA, or see the FSF site: http://www.fsf.org.
     -->
 <cdk:properties xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:cdk="http://jboss.org/schema/richfaces/cdk/extensions"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee">
     <property>
         <description>
             Alternate textual description of the element rendered by this component.

@@ -139,7 +139,7 @@ public class CdkResolverTest extends CdkTestBase {
 
         replay(facesConfigSource, templatesSource);
 
-        InputSource input = entityResolver.resolveSystemId("http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd");
+        InputSource input = entityResolver.resolveSystemId("https://jakarta.ee/xml/ns/jakartaee/web-facesconfig_4_0.xsd");
         verify(facesConfigSource, templatesSource);
         assertNotNull(input);
     }

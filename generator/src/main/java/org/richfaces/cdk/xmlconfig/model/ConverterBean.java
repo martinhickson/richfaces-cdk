@@ -38,7 +38,6 @@ import org.richfaces.cdk.model.PropertyModel;
  */
 @XmlType(name = "faces-config-converterType", namespace = ComponentLibrary.FACES_CONFIG_NAMESPACE, propOrder = { "id",
         "converterForClass", "targetClass", "facesAttributes", "properties", "extension" })
-@XmlJavaTypeAdapter(ConverterAdapter.class)
 public class ConverterBean extends ElementBeanBase<ConverterBean.ConverterExtension> {
     private ClassName converterForClass;
     private ClassName targetClass;

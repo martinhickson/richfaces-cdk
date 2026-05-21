@@ -17,30 +17,25 @@
     -->
 <cdk:properties xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:cdk="http://jboss.org/schema/richfaces/cdk/extensions"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee">
+    <xi:include xpointer="xmlns(cdk=http://jboss.org/schema/richfaces/cdk/extensions)xpointer(/cdk:properties/*)"
+        href="urn:attributes:jakarta.faces.component.ActionSource.xml" />
     <property>
         <description>
-            The number of columns to be displayed.
+            MethodExpression representing the application action to invoke
+            when this component is activated by the user.
+            The expression
+            must evaluate to a public method that takes no parameters, and
+            returns an Object (the toString() of
+            which is called to derive
+            the logical outcome) which is passed to the NavigationHandler
+            for this application.
         </description>
-        <display-name>Columns</display-name>
+        <display-name>Application Action</display-name>
         <icon />
-        <property-name>cols</property-name>
-        <property-class>int</property-class>
+        <property-name>actionExpression</property-name>
+        <property-class>jakarta.el.MethodExpression</property-class>
         <property-extension>
-            <cdk:pass-through>true</cdk:pass-through>
-        </property-extension>
-    </property>
-
-    <property>
-        <description>
-            The number of rows to be displayed.
-        </description>
-        <display-name>Rows</display-name>
-        <icon />
-        <property-name>rows</property-name>
-        <property-class>int</property-class>
-        <property-extension>
-            <cdk:pass-through>true</cdk:pass-through>
-            <cdk:literal>false</cdk:literal>
+            <cdk:signature />
         </property-extension>
     </property>
 </cdk:properties>

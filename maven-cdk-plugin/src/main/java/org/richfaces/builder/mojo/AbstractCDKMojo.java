@@ -172,8 +172,13 @@ public abstract class AbstractCDKMojo extends AbstractMojo {
 
             // Check version-specific methods in UIComponent class
             try {
-                Class<?> componentClass = createProjectClassLoader(project, false).loadClass(
-                        "javax.faces.component.UIComponent");
+                ClassLoader projectLoader = createProjectClassLoader(project, false);
+                Class<?> componentClass = null;
+                try {
+                    componentClass = projectLoader.loadClass("jakarta.faces.component.UIComponent");
+                } catch (ClassNotFoundException ignored) {
+                    componentClass = projectLoader.loadClass("javax.faces.component.UIComponent");
+                }
                 Method[] methods = componentClass.getDeclaredMethods();
 
                 for (int i = 0; i < methods.length; i++) {

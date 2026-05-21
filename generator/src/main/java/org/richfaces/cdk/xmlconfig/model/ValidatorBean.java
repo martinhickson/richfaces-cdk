@@ -38,7 +38,6 @@ import org.richfaces.cdk.model.PropertyModel;
  */
 @XmlType(name = "faces-config-validatorType", namespace = ComponentLibrary.FACES_CONFIG_NAMESPACE, propOrder = { "id",
         "targetClass", "facesAttributes", "properties", "extension" })
-@XmlJavaTypeAdapter(ValidatorAdapter.class)
 public class ValidatorBean extends ElementBeanBase<ValidatorBean.ValidatorExtension> {
     private ClassName targetClass;
     private FacesId id;

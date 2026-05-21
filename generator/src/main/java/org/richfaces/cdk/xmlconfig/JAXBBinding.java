@@ -36,6 +36,7 @@ import java.util.Collection;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
+import jakarta.xml.bind.PropertyException;
 import jakarta.xml.bind.Unmarshaller;
 import jakarta.xml.bind.UnmarshallerHandler;
 import jakarta.xml.bind.util.ValidationEventCollector;
@@ -161,7 +162,7 @@ public class JAXBBinding implements JAXB {
         } catch (IOException e) {
             throw new CdkException("JAXB Unmarshaller input error", e);
         } catch (SAXException e) {
-            throw new CdkException("XML error", e);
+            throw new CdkException("XML error: " + e.getMessage(), e);
         } finally {
 
             // TODO Refactoring
@@ -210,7 +211,7 @@ public class JAXBBinding implements JAXB {
             if (null != schemaLocation) {
                 marshaller.setProperty(Marshaller.JAXB_SCHEMA_LOCATION, schemaLocation);
 
-                marshaller.setProperty("com.sun.xml.bind.namespacePrefixMapper", PREFFIX_MAPPER);
+                setNamespacePrefixMapper(marshaller);
             }
 
             marshaller.marshal(model, output);
@@ -255,5 +256,17 @@ public class JAXBBinding implements JAXB {
 
     public static boolean isCollections(Class<?> targetType, Object propertyValue) {
         return Collection.class.isAssignableFrom(targetType) && propertyValue instanceof Collection;
+    }
+
+    private void setNamespacePrefixMapper(Marshaller marshaller) throws JAXBException {
+        for (String property : ImmutableSet.of("org.glassfish.jaxb.namespacePrefixMapper",
+                "com.sun.xml.bind.namespacePrefixMapper")) {
+            try {
+                marshaller.setProperty(property, PREFFIX_MAPPER);
+                return;
+            } catch (PropertyException ignored) {
+                // try next property name
+            }
+        }
     }
 }

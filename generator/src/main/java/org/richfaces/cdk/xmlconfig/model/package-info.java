@@ -6,9 +6,9 @@
  *
  */
 @XmlAccessorType(XmlAccessType.NONE)
-@jakarta.xml.bind.annotation.XmlSchema(namespace = ComponentLibrary.FACES_CONFIG_NAMESPACE, location = ComponentLibrary.FACES_CONFIG_SCHEMA_LOCATION, elementFormDefault = jakarta.xml.bind.annotation.XmlNsForm.QUALIFIED, xmlns = {
-        @jakarta.xml.bind.annotation.XmlNs(prefix = "cdk", namespaceURI = ComponentLibrary.CDK_EXTENSIONS_NAMESPACE),
-        @jakarta.xml.bind.annotation.XmlNs(prefix = "", namespaceURI = ComponentLibrary.FACES_CONFIG_NAMESPACE) })
+@jakarta.xml.bind.annotation.XmlSchema(namespace = "https://jakarta.ee/xml/ns/jakartaee", location = "https://jakarta.ee/xml/ns/jakartaee/web-facesconfig_4_0.xsd", elementFormDefault = jakarta.xml.bind.annotation.XmlNsForm.QUALIFIED, xmlns = {
+        @jakarta.xml.bind.annotation.XmlNs(prefix = "cdk", namespaceURI = "http://jboss.org/schema/richfaces/cdk/extensions"),
+        @jakarta.xml.bind.annotation.XmlNs(prefix = "", namespaceURI = "https://jakarta.ee/xml/ns/jakartaee") })
 @XmlJavaTypeAdapters({ @XmlJavaTypeAdapter(type = ClassName.class, value = ClassAdapter.class),
         @XmlJavaTypeAdapter(type = AttributeModel.class, value = AttributeAdapter.class),
         @XmlJavaTypeAdapter(type = PropertyModel.class, value = PropertyAdapter.class),

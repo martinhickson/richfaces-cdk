@@ -22,11 +22,8 @@
  */
 package org.richfaces.cdk.xmlconfig;
 
+import org.glassfish.jaxb.runtime.marshaller.NamespacePrefixMapper;
 import org.richfaces.cdk.model.ComponentLibrary;
-
-// TODO: NamespacePrefixMapper is not available in Jakarta EE 10 JAXB implementation
-// This functionality may need to be reimplemented using a different approach
-// import org.glassfish.jaxb.marshaller.NamespacePrefixMapper;
 
 /**
  * <p class="changed_added_4_0">
@@ -34,13 +31,8 @@ import org.richfaces.cdk.model.ComponentLibrary;
  *
  * @author asmirnov@exadel.com
  */
-public class FacesConfigNamespacePreffixMapper { // extends NamespacePrefixMapper {
-    /*
-     * (non-Javadoc)
-     *
-     * @see com.sun.xml.internal.bind.marshaller.NamespacePrefixMapper#getPreferredPrefix(java.lang.String, java.lang.String,
-     * boolean)
-     */
+public class FacesConfigNamespacePreffixMapper extends NamespacePrefixMapper {
+    @Override
     public String getPreferredPrefix(String namespaceUri, String suggestion, boolean required) {
         if (ComponentLibrary.FACES_CONFIG_NAMESPACE.equals(namespaceUri)) {
             return "";

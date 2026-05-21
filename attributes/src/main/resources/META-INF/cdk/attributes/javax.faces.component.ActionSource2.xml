@@ -16,9 +16,9 @@
         Boston, MA 02110-1301 USA, or see the FSF site: http://www.fsf.org.
     -->
 <cdk:properties xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:cdk="http://jboss.org/schema/richfaces/cdk/extensions"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee">
     <xi:include xpointer="xmlns(cdk=http://jboss.org/schema/richfaces/cdk/extensions)xpointer(/cdk:properties/*)"
-        href="urn:attributes:javax.faces.component.ActionSource.xml" />
+        href="urn:attributes:jakarta.faces.component.ActionSource.xml" />
     <property>
         <description>
             MethodExpression representing the application action to invoke
@@ -33,7 +33,7 @@
         <display-name>Application Action</display-name>
         <icon />
         <property-name>actionExpression</property-name>
-        <property-class>javax.el.MethodExpression</property-class>
+        <property-class>jakarta.el.MethodExpression</property-class>
         <property-extension>
             <cdk:hidden>true</cdk:hidden>
             <cdk:signature />

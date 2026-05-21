@@ -25,24 +25,43 @@ import java.lang.annotation.Annotation;
 import javax.annotation.processing.SupportedAnnotationTypes;
 import javax.lang.model.element.AnnotationMirror;
 import javax.lang.model.element.Element;
+import javax.lang.model.element.TypeElement;
+
+import jakarta.faces.convert.FacesConverter;
 
 import org.richfaces.cdk.CdkProcessingException;
 import org.richfaces.cdk.annotations.JsfConverter;
 import org.richfaces.cdk.apt.SourceUtils;
+import org.richfaces.cdk.model.ClassName;
 import org.richfaces.cdk.model.ComponentLibrary;
 import org.richfaces.cdk.model.ConverterModel;
+import org.richfaces.cdk.model.FacesId;
 
 /**
  * @author akolonitsky
  * @since Jan 4, 2010
  */
-@SupportedAnnotationTypes({ "jakarta.faces.component.FacesComponent", JsfConverter.NAME })
+@SupportedAnnotationTypes({ "jakarta.faces.component.FacesComponent", "jakarta.faces.convert.FacesConverter",
+        JsfConverter.NAME })
 public class ConverterProcessor extends ProcessorBase implements CdkAnnotationProcessor {
     @Override
     public void process(Element element, ComponentLibrary library) throws CdkProcessingException {
         SourceUtils sourceUtils = getSourceUtils();
         AnnotationMirror converter = sourceUtils.getAnnotationMirror(element, JsfConverter.class);
+        if (null != converter) {
+            processJsfConverter(element, library, converter);
+            return;
+        }
 
+        AnnotationMirror facesConverter = sourceUtils.getAnnotationMirror(element, FacesConverter.class);
+        if (null != facesConverter) {
+            processFacesConverter(element, library, facesConverter);
+        }
+    }
+
+    private void processJsfConverter(Element element, ComponentLibrary library, AnnotationMirror converter)
+            throws CdkProcessingException {
+        SourceUtils sourceUtils = getSourceUtils();
         ConverterModel converterModel = new ConverterModel();
         sourceUtils.setModelProperty(converterModel, converter, "id");
         sourceUtils.setModelProperty(converterModel, converter, "converterForClass", "forClass");
@@ -50,6 +69,22 @@ public class ConverterProcessor extends ProcessorBase implements CdkAnnotationPr
         setDescription(converterModel, converter, getDocComment(element));
         processAttributes(element, converterModel, converter);
         setTagInfo(converter, converterModel);
+        library.getConverters().add(converterModel);
+    }
+
+    private void processFacesConverter(Element element, ComponentLibrary library, AnnotationMirror facesConverter) {
+        SourceUtils sourceUtils = getSourceUtils();
+        ConverterModel converterModel = new ConverterModel();
+        String converterId = sourceUtils.getAnnotationValue(facesConverter, "value", String.class);
+        if (null == converterId || converterId.isEmpty()) {
+            converterId = sourceUtils.getAnnotationValue(facesConverter, "converterId", String.class);
+        }
+        if (null != converterId && !converterId.isEmpty()) {
+            converterModel.setId(FacesId.parseId(converterId));
+        }
+        converterModel.setTargetClass(ClassName.parseName(((TypeElement) element).getQualifiedName().toString()));
+        converterModel.setGenerate(false);
+        setDescription(converterModel, facesConverter, getDocComment(element));
         library.getConverters().add(converterModel);
     }
 

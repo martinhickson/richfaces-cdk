@@ -4,21 +4,21 @@ package ${tag.targetClass.package};
 
 import java.io.Serializable;
 <#if model.hasBindingAttribute=true>
-import javax.el.MethodExpression;
-import javax.el.ELException;
-import javax.el.MethodExpression;
-import javax.faces.context.FacesContext;
-import javax.faces.el.EvaluationException;
-import javax.faces.el.MethodBinding;
-import javax.faces.el.MethodNotFoundException;
-import javax.faces.view.facelets.FaceletContext;
-import javax.faces.view.facelets.MetaRule;
-import javax.faces.view.facelets.MetaRuleset;
-import javax.faces.view.facelets.Metadata;
-import javax.faces.view.facelets.MetadataTarget;
-import javax.faces.view.facelets.TagAttribute;
+import jakarta.el.MethodExpression;
+import jakarta.el.ELException;
+import jakarta.el.MethodExpression;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.el.EvaluationException;
+import jakarta.faces.el.MethodBinding;
+import jakarta.faces.el.MethodNotFoundException;
+import jakarta.faces.view.facelets.FaceletContext;
+import jakarta.faces.view.facelets.MetaRule;
+import jakarta.faces.view.facelets.MetaRuleset;
+import jakarta.faces.view.facelets.Metadata;
+import jakarta.faces.view.facelets.MetadataTarget;
+import jakarta.faces.view.facelets.TagAttribute;
 </#if>
-import javax.faces.view.facelets.${model}Config;
+import jakarta.faces.view.facelets.${model}Config;
 import ${model.targetClass};
 import ${tag.baseClass};
 <#list model.tagImports as importedClass>import ${importedClass.name};
@@ -87,7 +87,7 @@ public class ${tag.targetClass.simpleName} extends ${tag.baseClass.simpleName} {
                 throws MethodNotFoundException {
             try {
                 return m.getMethodInfo(context.getELContext()).getReturnType();
-            } catch (javax.el.MethodNotFoundException e) {
+            } catch (jakarta.el.MethodNotFoundException e) {
                 throw new MethodNotFoundException(e.getMessage(), e.getCause());
             } catch (ELException e) {
                 throw new EvaluationException(e.getMessage(), e.getCause());
@@ -98,7 +98,7 @@ public class ${tag.targetClass.simpleName} extends ${tag.baseClass.simpleName} {
                 throws EvaluationException, MethodNotFoundException {
             try {
                 return m.invoke(context.getELContext(), params);
-            } catch (javax.el.MethodNotFoundException e) {
+            } catch (jakarta.el.MethodNotFoundException e) {
                 throw new MethodNotFoundException(e.getMessage(), e.getCause());
             } catch (ELException e) {
                 throw new EvaluationException(e.getMessage(), e.getCause());

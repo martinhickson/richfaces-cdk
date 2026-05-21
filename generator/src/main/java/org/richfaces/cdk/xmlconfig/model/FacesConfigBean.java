@@ -34,13 +34,11 @@ import org.richfaces.cdk.model.BehaviorModel;
 import org.richfaces.cdk.model.ComponentLibrary;
 import org.richfaces.cdk.model.ComponentModel;
 import org.richfaces.cdk.model.ConfigExtension;
-import org.richfaces.cdk.model.ConverterModel;
 import org.richfaces.cdk.model.EventModel;
 import org.richfaces.cdk.model.Extensible;
 import org.richfaces.cdk.model.FunctionModel;
 import org.richfaces.cdk.model.RenderKitModel;
 import org.richfaces.cdk.model.Taglib;
-import org.richfaces.cdk.model.ValidatorModel;
 
 import com.google.common.collect.Lists;
 
@@ -60,16 +58,14 @@ public class FacesConfigBean implements Extensible<FacesConfigBean.FacesConfigEx
     @XmlJavaTypeAdapter(RenderKitAdapter.class)
     private List<RenderKitModel> renderKits = Lists.newArrayList();
     @XmlElement(name = "converter", namespace = ComponentLibrary.FACES_CONFIG_NAMESPACE)
-    @XmlJavaTypeAdapter(ConverterAdapter.class)
-    private List<ConverterModel> converters = Lists.newArrayList();
+    private List<ConverterBean> converters = Lists.newArrayList();
     @XmlElement(name = "validator", namespace = ComponentLibrary.FACES_CONFIG_NAMESPACE)
-    @XmlJavaTypeAdapter(ValidatorAdapter.class)
-    private List<ValidatorModel> validators = Lists.newArrayList();
+    private List<ValidatorBean> validators = Lists.newArrayList();
     @XmlElement(name = "behavior", namespace = ComponentLibrary.FACES_CONFIG_NAMESPACE)
     @XmlJavaTypeAdapter(BehaviorAdapter.class)
     private List<BehaviorModel> behaviors = Lists.newArrayList();
     @XmlAttribute
-    private String version = "2.0";
+    private String version = "4.0";
     @XmlAttribute(name = "metadata-complete")
     private Boolean metadataComplete;
     @XmlElement(name = "faces-config-extension", namespace = ComponentLibrary.FACES_CONFIG_NAMESPACE)
@@ -155,19 +151,19 @@ public class FacesConfigBean implements Extensible<FacesConfigBean.FacesConfigEx
         this.renderKits = renderKits;
     }
 
-    public List<ConverterModel> getConverters() {
+    public List<ConverterBean> getConverters() {
         return converters;
     }
 
-    public void setConverters(List<ConverterModel> converters) {
+    public void setConverters(List<ConverterBean> converters) {
         this.converters = converters;
     }
 
-    public List<ValidatorModel> getValidators() {
+    public List<ValidatorBean> getValidators() {
         return validators;
     }
 
-    public void setValidators(List<ValidatorModel> validators) {
+    public void setValidators(List<ValidatorBean> validators) {
         this.validators = validators;
     }
 

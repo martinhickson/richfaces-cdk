@@ -51,9 +51,9 @@ import com.google.inject.Singleton;
 @Singleton
 public class ComponentLibrary implements Serializable, Extensible<ConfigExtension>, Trackable, Visitable {
     public static final String CDK_EXTENSIONS_NAMESPACE = "http://jboss.org/schema/richfaces/cdk/extensions";
-    public static final String FACES_CONFIG_NAMESPACE = "http://java.sun.com/xml/ns/javaee";
-    public static final String FACES_CONFIG_SCHEMA_LOCATION = "http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd";
-    public static final String TAGLIB_SCHEMA_LOCATION = "http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd";
+    public static final String FACES_CONFIG_NAMESPACE = "https://jakarta.ee/xml/ns/jakartaee";
+    public static final String FACES_CONFIG_SCHEMA_LOCATION = "https://jakarta.ee/xml/ns/jakartaee/web-facesconfig_4_0.xsd";
+    public static final String TAGLIB_SCHEMA_LOCATION = "https://jakarta.ee/xml/ns/jakartaee/web-facelettaglibrary_4_0.xsd";
     private static final long serialVersionUID = -6055670836731899832L;
     private final ModelCollection<ComponentModel> components = ModelSet.<ComponentModel>create();
     /**
