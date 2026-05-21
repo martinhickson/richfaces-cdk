@@ -5,7 +5,7 @@
     <parent>
         <artifactId>aggregator</artifactId>
         <groupId>org.richfaces.cdk</groupId>
-        <version>4.2.2-bravura-17</version>
+        <version>4.2.2-bravura-20</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>annotations</artifactId>
