@@ -26,7 +26,7 @@ import java.util.Collections;
 import java.util.List;
 
 import jakarta.activation.MimetypesFileTypeMap;
-import javax.faces.application.Resource;
+import jakarta.faces.application.Resource;
 
 import org.richfaces.cdk.resource.util.ResourceUtil;
 import org.richfaces.cdk.vfs.VirtualFile;

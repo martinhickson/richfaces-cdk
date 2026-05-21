@@ -21,7 +21,7 @@
  */
 package org.richfaces.cdk;
 
-import javax.faces.context.FacesContext;
+import jakarta.faces.context.FacesContext;
 
 /**
  * @author Nick Belaevski

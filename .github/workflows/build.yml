@@ -16,6 +16,10 @@ jobs:
     runs-on: ubuntu-latest
     env:
       MAVEN_OPTS: -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
+      JBOSS_PUBLIC_REPO: https://repository.jboss.org/nexus/content/groups/public
+      EXTRA_REPO_RICHFACES: https://maven.pkg.github.com/martinhickson/richfaces
+      EXTRA_REPO_RICHFACES_CORE: https://maven.pkg.github.com/martinhickson/richfaces4-core
+      EXTRA_REPO_EL: https://maven.pkg.github.com/martinhickson/jboss-el
 
     steps:
     - name: Checkout code
@@ -34,7 +38,7 @@ jobs:
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2
 
-    - name: Configure Maven for GitHub Packages
+    - name: Configure Maven settings
       run: |
         mkdir -p ~/.m2
         cat > ~/.m2/settings.xml << EOF
@@ -48,12 +52,70 @@ jobs:
               <username>${{ github.actor }}</username>
               <password>${{ secrets.GITHUB_TOKEN }}</password>
             </server>
+            <server>
+              <id>github-packages-richfaces</id>
+              <username>${{ github.actor }}</username>
+              <password>${{ secrets.GITHUB_TOKEN }}</password>
+            </server>
+            <server>
+              <id>github-packages-richfaces-core</id>
+              <username>${{ github.actor }}</username>
+              <password>${{ secrets.GITHUB_TOKEN }}</password>
+            </server>
+            <server>
+              <id>github-packages-el</id>
+              <username>${{ github.actor }}</username>
+              <password>${{ secrets.GITHUB_TOKEN }}</password>
+            </server>
           </servers>
+          <profiles>
+            <profile>
+              <id>ci-extra-repositories</id>
+              <repositories>
+                <repository>
+                  <id>jboss-public</id>
+                  <name>JBoss Public Repository Group</name>
+                  <url>${JBOSS_PUBLIC_REPO}</url>
+                  <releases><enabled>true</enabled></releases>
+                  <snapshots><enabled>false</enabled></snapshots>
+                </repository>
+              </repositories>
+            </profile>
+            <profile>
+              <id>bravura-extra-repos</id>
+              <repositories>
+                <repository>
+                  <id>github-packages-richfaces</id>
+                  <name>Bravura RichFaces (GitHub Packages)</name>
+                  <url>${EXTRA_REPO_RICHFACES}</url>
+                  <releases><enabled>true</enabled></releases>
+                  <snapshots><enabled>true</enabled></snapshots>
+                </repository>
+                <repository>
+                  <id>github-packages-richfaces-core</id>
+                  <name>Bravura RichFaces Core (GitHub Packages)</name>
+                  <url>${EXTRA_REPO_RICHFACES_CORE}</url>
+                  <releases><enabled>true</enabled></releases>
+                  <snapshots><enabled>true</enabled></snapshots>
+                </repository>
+                <repository>
+                  <id>github-packages-el</id>
+                  <name>Bravura JBoss EL (GitHub Packages)</name>
+                  <url>${EXTRA_REPO_EL}</url>
+                  <releases><enabled>true</enabled></releases>
+                  <snapshots><enabled>true</enabled></snapshots>
+                </repository>
+              </repositories>
+            </profile>
+          </profiles>
+          <activeProfiles>
+            <activeProfile>ci-extra-repositories</activeProfile>
+          </activeProfiles>
         </settings>
         EOF
 
     - name: Build all modules
-      run: mvn clean install -ntp -Dmaven.test.skip=true
+      run: mvn clean install -ntp -Dmaven.test.skip=true -Pbravura-extra-repos
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

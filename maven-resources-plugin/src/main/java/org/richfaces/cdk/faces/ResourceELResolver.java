@@ -24,18 +24,17 @@ package org.richfaces.cdk.faces;
 import static org.richfaces.cdk.strings.Constants.SLASH_JOINER;
 import static org.richfaces.cdk.strings.Constants.SLASH_SPLITTER;
 
-import java.beans.FeatureDescriptor;
 import java.text.MessageFormat;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.el.ELContext;
-import javax.el.ELException;
-import javax.el.ELResolver;
-import javax.el.PropertyNotFoundException;
-import javax.faces.application.Resource;
-import javax.faces.application.ResourceHandler;
-import javax.faces.context.FacesContext;
+import jakarta.el.ELContext;
+import jakarta.el.ELException;
+import jakarta.el.ELResolver;
+import jakarta.el.PropertyNotFoundException;
+import jakarta.faces.application.Resource;
+import jakarta.faces.application.ResourceHandler;
+import jakarta.faces.context.FacesContext;
 
 import com.google.common.collect.Lists;
 
@@ -88,6 +87,7 @@ public class ResourceELResolver extends ELResolver {
         return SLASH_JOINER.join(resultPathSegments);
     }
 
+    @Override
     public Object getValue(ELContext context, Object base, Object property) {
         checkBaseAndProperty(base, property);
 
@@ -122,24 +122,22 @@ public class ResourceELResolver extends ELResolver {
         return null;
     }
 
+    @Override
     public Class<?> getType(ELContext context, Object base, Object property) {
         checkBaseAndProperty(base, property);
         return null;
     }
 
+    @Override
     public void setValue(ELContext context, Object base, Object property, Object value) {
         checkBaseAndProperty(base, property);
     }
 
+    @Override
     public boolean isReadOnly(ELContext context, Object base, Object property) {
         checkBaseAndProperty(base, property);
 
         return true;
-    }
-
-    @Override
-    public Iterator<FeatureDescriptor> getFeatureDescriptors(ELContext context, Object base) {
-        return null;
     }
 
     @Override
