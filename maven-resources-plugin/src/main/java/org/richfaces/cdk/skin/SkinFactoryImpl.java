@@ -21,7 +21,7 @@
  */
 package org.richfaces.cdk.skin;
 
-import javax.faces.context.FacesContext;
+import jakarta.faces.context.FacesContext;
 
 import org.richfaces.skin.AbstractSkinFactory;
 import org.richfaces.skin.Skin;
@@ -52,7 +52,7 @@ public class SkinFactoryImpl extends AbstractSkinFactory {
     /*
      * (non-Javadoc)
      *
-     * @see org.richfaces.skin.SkinFactory#getBaseSkin(javax.faces.context.FacesContext)
+     * @see org.richfaces.skin.SkinFactory#getBaseSkin(jakarta.faces.context.FacesContext)
      */
     @Override
     public Skin getBaseSkin(FacesContext facesContext) {
@@ -63,7 +63,7 @@ public class SkinFactoryImpl extends AbstractSkinFactory {
     /*
      * (non-Javadoc)
      *
-     * @see org.richfaces.skin.SkinFactory#getTheme(javax.faces.context.FacesContext, java.lang.String)
+     * @see org.richfaces.skin.SkinFactory#getTheme(jakarta.faces.context.FacesContext, java.lang.String)
      */
     @Override
     public Theme getTheme(FacesContext facesContext, String name) {

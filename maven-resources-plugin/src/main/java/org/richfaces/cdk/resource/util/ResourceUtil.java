@@ -32,7 +32,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.faces.application.Resource;
+import jakarta.faces.application.Resource;
 
 import org.richfaces.cdk.vfs.VFSRoot;
 import org.richfaces.cdk.vfs.VirtualFile;
